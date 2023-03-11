@@ -1,0 +1,6 @@
+.phpdoc
+reports
+vendor
+.phpunit.result.cache
+composer.lock
+config/.config.yml

@@ -1,0 +1,61 @@
+{
+    "name": "code-simplify/ciesta-project",
+    "type": "library",
+    "description": "A simple way to write classes in PHP. No more getters, setters, constructors, or SQL.",
+    "authors": [
+        {
+            "name": "Felipe Gaspar"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Code\\": "src/",
+            "Example\\": "examples/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\UnitTest\\": "tests/unit"
+        }
+    },
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9",
+        "codeception/codeception": "^5.0",
+        "codeception/module-asserts": "^3.0",
+        "symfony/yaml": "^5.3",
+        "phuml/phuml": "^6.1",
+        "phpmetrics/phpmetrics": "^2.8",
+        "phpunit/php-code-coverage": "^9"
+    },
+    "scripts": {
+        "clear": [
+            "rm -f composer.lock",
+            "@composer clear-cache"
+        ],
+        "code-coverage": "codecept run --coverage",
+        "code-coverage-details": [
+            "codecept run --coverage --coverage-html"
+        ],
+        "unit-test": "codecept run unit",
+        "test-application": [
+            "@code-coverage"
+        ],
+        "build-application": [
+            "@clear",
+            "@composer install",
+            "@test-application"
+        ],
+        "doc": [
+            "rm -rf docs",
+            "vendor/bin/phpmetrics --report-html=docs/metrics src",
+            "mkdir docs/class",
+            "vendor/bin/phuml phuml:diagram -r -a -i -o -e php -p dot src/ docs/class/diagram.png",
+            "phpDocumentor -d src/ -t docs/code",
+            "@code-coverage-details",
+            "mv reports/coverage docs"
+        ]
+    }
+}

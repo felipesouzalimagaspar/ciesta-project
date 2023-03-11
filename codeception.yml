@@ -1,0 +1,26 @@
+paths:
+    tests: tests
+    output: reports
+    data: reports
+    support: tests/.codeception
+    envs: tests/_envs
+bootstrap: bootstrap.php
+settings:
+    suite_class: \PHPUnit_Framework_TestSuite
+    memory_limit: 1024M
+    log: true
+    colors: true
+actor_suffix: Tester
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
+coverage:
+    enabled: true
+    include:
+        - src/*
+    exclude: 
+        - src/*log
+    low_limit: 90
+    high_limit: 95
+    show_only_summary: false
+    show_uncovered: true

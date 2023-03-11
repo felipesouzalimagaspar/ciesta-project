@@ -1,0 +1,10 @@
+{
+    "liveServer.settings.port": 8813,
+    "material-icon-theme.folders.associations": {
+        ".phpdoc": "docs",
+        "docs/metrics": "php",
+        "src/Type": "php",
+        "src/Property": "php",
+        "src/Simplify": "php"
+    }
+}

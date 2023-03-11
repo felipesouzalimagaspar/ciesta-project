@@ -1,0 +1,9 @@
+ciesta:
+  databases:
+    - master:
+      host: "localhost"
+      user: "user"
+      password: ""
+      name: "ciesta"
+      type: "mysql"
+      charset: "utf8mb4"
